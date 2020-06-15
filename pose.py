@@ -5,19 +5,25 @@ import pickle
 from keras.models import model_from_json
 from keras.models import load_model
 import matplotlib.pyplot as plt
+import numpy as np
 
+IMG_SIZE = 250
 
 # Opening the files about data
-X = pickle.load(open("X.pickle", "rb"))
-y = pickle.load(open("y.pickle", "rb"))
+X = pickle.load(open("yoga/X.pickle", "rb"))
+y = pickle.load(open("yoga/y.pickle", "rb"))
 
+
+X = np.array(X) #.reshape(-1, IMG_SIZE, IMG_SIZE, 1)
+
+y = np.array(y)
 # normalizing data (a pixel goes from 0 to 255)
-#X = X/255
+X = X/255
 #print(len(X))
 #print(len(y))
 
-plt.plot([1,2,3,4])
-'''
+#plt.plot([1,2,3,4])
+
 model = Sequential()
 # 3 convolutional layers
 model.add(Conv2D(32, (3, 3), input_shape = X[0].shape))
@@ -52,18 +58,19 @@ model.compile(loss="sparse_categorical_crossentropy",
 
 # Training the model, with 40 iterations
 # validation_split corresponds to the percentage of images used for the validation phase compared to all the images
-history = model.fit(X, y, batch_size=32, epochs=40, validation_split=0.1)
+history = model.fit(X, y, batch_size=64, epochs=20, validation_split=0.1)
 
 # Saving the model
 model_json = model.to_json()
 with open("model.json", "w") as json_file :
 	json_file.write(model_json)
 
-model.save_weights("model.h5")
+model.save_weights("yoga\model\model.h5")
 print("Saved model to disk")
 
-model.save('CNN.model')
+model.save('yoga\model\CNN.model')
 
+'''
 # Printing a graph showing the accuracy changes during the training phase
 print(history.history.keys())
 plt.figure(1)
