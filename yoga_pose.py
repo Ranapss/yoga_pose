@@ -6,7 +6,8 @@ import cv2
 import random
 import pickle
 from tqdm import tqdm
-pose = Image.open('training_set//bridge//File1.jpg').convert('LA')
+import IPython
+pose = Image.open('training_set//bridge//File1.jpg').convert('L')
 
 categories = ['bridge','childs','downwarddog','mountain','plank','seatedforwardbend','tree','trianglepose','warrior1','warrior2']
 datadir = 'training_set'
@@ -14,6 +15,11 @@ im_size = 50
 
 training_data = []
 
+im = np.array(pose)
+IPython.display.display(Image.fromarray(im))
+
+
+'''
 for category in tqdm(categories):
     path = os.path.join(datadir,category)
     class_num = categories.index(category) 
@@ -51,3 +57,4 @@ pickle_out.close()
 
 pickle_in = open("X.pickle", "rb")
 X = pickle.load(pickle_in)
+'''
