@@ -2,12 +2,13 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten, Conv2D, MaxPooling2D
 import pickle
+from keras_applications import densenet
 from keras.models import model_from_json
 from keras.models import load_model
 import matplotlib.pyplot as plt
 import numpy as np
 
-IMG_SIZE = 250
+IMG_SIZE = 32 #224
 
 # Opening the files about data
 X = pickle.load(open("yoga/X.pickle", "rb"))

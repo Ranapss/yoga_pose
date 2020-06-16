@@ -7,16 +7,15 @@ import random
 import pickle
 from tqdm import tqdm
 import IPython
-pose = Image.open('training_set//bridge//File1.jpg').convert('L')
+pose = Image.open('yoga//training_set//bridge//File1.jpg').convert('L')
 
 categories = ['bridge','childs','downwarddog','mountain','plank','seatedforwardbend','tree','trianglepose','warrior1','warrior2']
 datadir = 'training_set'
-im_size = 50
+im_size = 32 #224
 
 training_data = []
 
 im = np.array(pose)
-IPython.display.display(Image.fromarray(im))
 
 
 '''
@@ -31,6 +30,7 @@ for category in tqdm(categories):
             training_data.append([np.array(new_im_arr),class_num])
         except:
             pass
+
 random.shuffle(training_data)
 
 X = [] #features 
@@ -55,6 +55,4 @@ pickle_out = open("y.pickle", "wb")
 pickle.dump(y, pickle_out)
 pickle_out.close()
 
-pickle_in = open("X.pickle", "rb")
-X = pickle.load(pickle_in)
 '''

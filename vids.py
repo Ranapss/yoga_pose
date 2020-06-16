@@ -14,7 +14,7 @@ CATEGORIES = ['bridge','childs','downwarddog','mountain','plank','seatedforwardb
 
 
 def prepare(img_array):
-    IMG_SIZE = 50
+    IMG_SIZE = 32 #224
     #img_array = cv2.imread(file, cv2.IMREAD_GRAYSCALE)
     img_array = np.array(img_array)
     img_array = img_array/255.0
@@ -30,7 +30,7 @@ count = 0
 while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
-    fps = cap.get(cv2.CAP_PROP_FPS)
+    #fps = cap.get(cv2.CAP_PROP_FPS)
     # Our operations on the frame come here
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
