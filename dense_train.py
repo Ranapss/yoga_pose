@@ -31,13 +31,8 @@ def data_gen(train_dir,test_dir):
     '''make the data generators, does transforms'''
     train_datagen = ImageDataGenerator(
         rescale=1. / 255,
-        #shear_range=0.2,
         zoom_range=0.2,
-        #fill_mode = 'constant',
-        #cval = 1,
         rotation_range = 5,
-        #width_shift_range=0.2,
-        #height_shift_range=0.2,
         horizontal_flip=True)
 
     test_datagen = ImageDataGenerator(rescale=1. / 255)

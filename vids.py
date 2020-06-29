@@ -9,7 +9,7 @@ from keras.models import model_from_json
 from keras.models import load_model
 
 
-model = tf.keras.models.load_model('yoga/model/cnn.model')
+#model = tf.keras.models.load_model('yoga/model/cnn.model')
 CATEGORIES = ['bridge','childs','downwarddog','mountain','plank','seatedforwardbend','tree','trianglepose','warrior1','warrior2']
 
 
@@ -35,12 +35,13 @@ while(True):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
 
-    predict = prepare(gray)
-    prediction = model.predict(predict)
-    prediction = list(prediction[0])
+    #predict = prepare(gray)
+    #prediction = model.predict(predict)
+    #prediction = list(prediction[0])
 
+    #CATEGORIES[prediction.index(max(prediction))])
     cv2.putText(gray,  
-                '{}'.format(CATEGORIES[prediction.index(max(prediction))]),  
+                '{}'.format(count),  
                 (50, 50),  
                 font, 1,  
                 (255, 255, 255),  
