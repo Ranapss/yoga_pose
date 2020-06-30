@@ -90,7 +90,7 @@ if __name__ == "__main__":
     model_json = model.to_json()
     with open("model.json", "w") as json_file :
         json_file.write(model_json)
-    model.save_weights("yoga\model\model.h5")
-    model.save('yoga\model\CNN.model')
+    model.save_weights("yoga/model/model.h5")
+    model.save('yoga/model/CNN.model')
     print("\nSaved model to disk\n")
 
